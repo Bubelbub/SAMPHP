@@ -4,7 +4,11 @@
 #include <sstream>
 #include <iostream>
 
+// Callbacks
 #include "bindings_callbacks.hpp"
+// Functions:
+// Server settings:
+#include "bindings_samphp.hpp"
 #include "bindings_util.hpp"
 #include "bindings_game.hpp"
 #include "bindings_vehicles.hpp"
@@ -19,6 +23,12 @@ ZEND_END_ARG_INFO()
 
 // Export functions to module
 static zend_function_entry php_samphp_functions[] = {
+	// samphp functions
+    PHP_FE(CallAMXNative, AllButFirstThreeArgsByReference)
+    PHP_FE(AMXNativeExists, NULL)
+    PHP_FE(DebugFunction, NULL)
+
+    // Util
     PHP_FE(SetGameModeText, NULL)
     PHP_FE(SendClientMessage, NULL)
 	PHP_FE(SendClientMessageToAll, NULL)

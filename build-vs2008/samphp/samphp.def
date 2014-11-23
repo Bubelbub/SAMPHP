@@ -45,4 +45,6 @@ EXPORTS
 	OnDialogResponse
 	OnPlayerTakeDamage
 	OnPlayerGiveDamage
+	OnPlayerWeaponShot
+	OnIncomingConnection
 	OnPlayerClickMap

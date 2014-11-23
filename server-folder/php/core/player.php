@@ -670,7 +670,66 @@ class Player
 	{
 		unset(static::$instances[$player->id]);
 	}
+
+	public static function getLastShotVectors()
+	{
+		return (object) GetPlayerLastShotVectors($this->id);
+	}
 	
+	public function netStats_GetConnectedTime()
+	{
+		return NetStats_GetConnectedTime($this->id);
+	}
+
+	public function netStats_MessagesReceived()
+	{
+		return NetStats_MessagesReceived($this->id);
+	}
+
+	public function netStats_BytesReceived()
+	{
+		return NetStats_BytesReceived($this->id);
+	}
+
+	public function netStats_MessagesSent()
+	{
+		return NetStats_MessagesSent($this->id);
+	}
+
+	public function netStats_BytesSent()
+	{
+		return NetStats_BytesSent($this->id);
+	}
+
+	public function netStats_MessagesRecvPerSecond()
+	{
+		return NetStats_MessagesRecvPerSecond($this->id);
+	}
+
+	public function netStats_PacketLossPercent()
+	{
+		return NetStats_PacketLossPercent($this->id);
+	}
+
+	public function netStats_ConnectionStatus()
+	{
+		return NetStats_ConnectionStatus($this->id);
+	}
+
+	public function netStats_GetIpPort()
+	{
+		return NetStats_GetIpPort($this->id);
+	}
+
+	public function sendDeathMessage($killer, $killee, $weapon)
+	{
+		return SendDeathMessageForPlayer($this->id, $killer, $killee, $weapon);
+	}
+
+/*	public function createExplosion($X, $Y, $Z, $type, $radius)
+	{
+		return CreateExplosionForPlayer($this->id, $X, $Y, $Z, $type, $radius);
+	}*/
 }
 
 Event::after('PlayerDisconnect', array('Player', 'handleDisconnect'));

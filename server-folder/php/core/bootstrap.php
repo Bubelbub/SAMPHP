@@ -7,6 +7,7 @@ define('SAMP_FILES_DIR', CORE_DIR.'../../scriptfiles/');
 
 set_include_path(get_include_path() . PATH_SEPARATOR . PHP_DIR . PATH_SEPARATOR . CORE_DIR);
 
+require_once 'helpers.php';
 require_once 'callbacks.php';
 require_once 'modelevent.php';
 require_once 'namedinstance.php';
@@ -27,6 +28,7 @@ require_once 'racecheckpoint.php';
 
 
 require_once 'text3d.php';
+require_once 'timer.php';
 require_once 'playertext3d.php';
 
 require_once 'menu.php';

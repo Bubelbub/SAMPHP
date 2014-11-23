@@ -173,11 +173,18 @@ class Server
 		return GameTextForPlayer($player->id, $message, $time, $style);
 	}
 
-	public static function blockIpAddress($ipaddress, $timems) {
-		return BlockIpAddress($ipaddress, $timems);
+	public static function getServerTickRate()
+	{
+		return GetServerTickRate();
 	}
 
-	public static function unBlockIpAddress($ipaddress) {
-		return UnBlockIpAddress($ipaddress);
+	public static function blockIpAddress($ip_address, $timems = 0)
+	{
+		return BlockIpAddress($ip_address, $timems);
+	}
+
+	public static function unBlockIpAddress($ip_address)
+	{
+		return UnBlockIpAddress($ip_address);
 	}
 }

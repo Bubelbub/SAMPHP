@@ -68,5 +68,16 @@ class PlayerCamera
 		return InterpolateCameraLookAt($this->id, $fromX, $fromY, $fromZ, $toX, $toY, $toZ, $time, $cut);
 	}
 
+	public function getZoom()
+	{
+		return GetPlayerCameraZoom($this->id);
+	}
+
+	public function getAspectRatio()
+	{
+		return GetPlayerCameraAspectRatio($this->id);
+	}
+
+
 }
 

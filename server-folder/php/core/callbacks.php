@@ -26,7 +26,7 @@ function OnGameModeInit()
 
 function OnObjectMoved($objectid)
 {
-	return Event::untilDifferent("ObjectMoved", true, $objectid);
+	return Event::untilDifferent("ObjectMoved", true, Object::find($objectid));
 }
 
 function OnPlayerClickMap($playerid, $fx, $fy, $fz)
@@ -76,7 +76,17 @@ function OnPlayerEditAttachedObject($playerid, $response, $index, $modelid, $bon
 
 function OnPlayerEditObject($playerid,	$playerobject,	$objectid,	$response,	$fX, $fY, $fZ,	$fRotX,	$fRotY,	$fRotZ)
 {
-	return Event::fireDefault("PlayerEditObject", true, Player::find($playerid, true), $playerobject, $objectid, $response, $fX, $fY, $fZ, $fRotX, $fRotY, $fRotZ);
+	$adam = Player::find($playerid, true);
+	switch($playerobject)
+	{
+		case 0:
+			$wtf = Object::find($objectid);
+		case 1:
+			$wtf = PlayerObject::findForPlayer($adam,$objectid);
+		default:
+			$wtf = 0;
+	}
+	return Event::fireDefault("PlayerEditObject", true, $adam, $playerobject, $wtf, $response, $fX, $fY, $fZ, $fRotX, $fRotY, $fRotZ);
 }
 
 function OnPlayerEnterCheckpoint($playerid)
@@ -104,9 +114,9 @@ function OnPlayerExitedMenu($playerid)
 	return Event::fireDefault("PlayerExitedMenu", true, Player::find($playerid, true));
 }
 
-function OnPlayerGiveDamage($playerid, $damagedid, $amount, $weaponid)
+function OnPlayerGiveDamage($playerid, $damagedid, $amount, $weaponid, $bodypart)
 {
-	return Event::fireDefault("PlayerGiveDamage", true, Player::find($playerid, true), Player::find($damagedid, true), $amount, $weaponid);
+	return Event::fireDefault("PlayerGiveDamage", true, Player::find($playerid, true), Player::find($damagedid, true), $amount, $weaponid, $bodypart);
 }
 
 function OnPlayerInteriorChange($playerid, $newinteriorid, $oldinteriorid)
@@ -131,7 +141,8 @@ function OnPlayerLeaveRaceCheckpoint($playerid)
 
 function OnPlayerObjectMoved($playerid, $objectid)
 {
-	return Event::fireDefault("PlayerObjectMoved", true, Player::find($playerid, true), Object::find($objectid));
+	$adam = Player::find($playerid, true);
+	return Event::fireDefault("PlayerObjectMoved", true, $adam, PlayerObject::findForPlayer($adam, $objectid));
 }
 
 function OnPlayerPickUpPickup($playerid, $pickupid)
@@ -156,7 +167,17 @@ function OnPlayerRequestSpawn($playerid)
 
 function OnPlayerSelectObject($playerid, $type, $objectid, $modelid, $fX, $fY, $fZ)
 {
-	return Event::fireDefault("PlayerSelectObject", true, Player::find($playerid, true), $type, Object::find($objectid), $modelid, $fX, $fY, $fZ);
+	$adam = Player::find($playerid, true);
+	switch($type)
+	{
+		case 1:
+			$wtf = Object::find($objectid);
+		case 2:
+			$wtf = PlayerObject::findForPlayer($adam,$objectid);
+		default:
+			$wtf = 0;
+	}
+	return Event::fireDefault("PlayerSelectObject", true, $adam, $type, $wtf, $modelid, $fX, $fY, $fZ);
 }
 
 function OnPlayerSelectedMenuRow($playerid, $row)
@@ -184,9 +205,9 @@ function OnPlayerStreamOut($playerid, $forplayerid)
 	return Event::fireDefault("PlayerStreamOut", true, Player::find($playerid, true), Player::find($forplayerid, true));
 }
 
-function OnPlayerTakeDamage($playerid, $issuerid, $amount, $weaponid)
+function OnPlayerTakeDamage($playerid, $issuerid, $amount, $weaponid, $bodypart)
 {
-	return Event::fireDefault("PlayerTakeDamage", true, Player::find($playerid, true), Player::find($issuerid, true), $amount, $weaponid);
+	return Event::fireDefault("PlayerTakeDamage", true, Player::find($playerid, true), Player::find($issuerid, true), $amount, $weaponid, $bodypart);
 }
 
 function OnPlayerTeamPrivmsg($playerid, $text)
@@ -204,6 +225,30 @@ function OnPlayerUpdate($playerid)
 	return Event::fireDefault("PlayerUpdate", true, Player::find($playerid, true));
 }
 
+function OnPlayerWeaponShot($playerid, $weaponid, $hittype, $hitid, $fX, $fY, $fZ)
+{
+	$adam = Player::find($playerid, true);
+	switch($hittype)
+	{
+		case 1:
+			$wtf = Player::find($hitid, true);
+		case 2:
+			$wtf = Vehicle::find($hitid);
+		case 3:
+			$wtf = Object::find($hitid);
+		case 4:
+			$wtf = PlayerObject::findForPlayer($adam, $hitid);
+		default:
+			$wtf = 0;
+	}
+	return Event::fireDefault("PlayerWeaponShot", true, $adam, $weaponid, $hittype, $wtf, $fX, $fY, $fZ);
+}
+
+function OnIncomingConnection($playerid, $ip_address, $port)
+{
+	return Event::fireDefault("IncomingConnection", true, Player::find($playerid, true), $ip_address, $port);
+}
+
 function OnRconCommand($cmd)
 {
 	return Event::untilDifferent("RconCommand", false, $cmd);
@@ -214,8 +259,9 @@ function OnRconLoginAttempt($ip, $playerid, $success)
 	return Event::fireDefault("RconLoginAttempt", true, $ip, Player::find($playerid, true), $success);
 }
 
-function OnUnoccupiedVehicleUpdate($vehicleid, $playerid, $passenger_seat, $newx, $newy, $newz, $velx, $vely, $velz) {
-	return Event::fireDefault("OnUnoccupiedVehicleUpdate", Vehicle::find($vehicleid), Player::find($playerid, true), $passenger_seat, $newx, $newy, $newz, $velx, $vely, $velz);
+function OnUnoccupiedVehicleUpdate($vehicleid, $playerid, $passengerSeat, $newX, $newY, $newZ)
+{
+	return Event::fireDefault("UnoccupiedVehicleUpdate", true, Vehicle::find($vehicleid), Player::find($playerid, true), $passengerSeat, $newX, $newY, $newZ);
 }
 
 function OnVehicleDamageStatusUpdate($vehicleid, $playerid)
@@ -256,13 +302,4 @@ function OnVehicleStreamIn($vehicleid, $forplayerid)
 function OnVehicleStreamOut($vehicleid, $forplayerid)
 {
 	return Event::fireDefault("VehicleStreamOut", true, Vehicle::find($vehicleid), Player::find($forplayerid, true));
-}
-
-function OnIncomingConnection($playerid, $ipaddress, $port) 
-{
-	return Event::fireDefault("IncomingConnection", true, Player::find($playerid, true), $ipaddress, $port);
-}
-
-function OnTrailerUpdate($playerid, $vehicleid) {
-	return Event::fireDefault("TrailerUpdate", true, Player::find($playerid, true), Vehicle::find($vehicleid));
 }

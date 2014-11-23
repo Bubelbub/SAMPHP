@@ -1,7 +1,6 @@
 PLUGIN_EXPORT bool PLUGIN_CALL OnGameModeInit()
 {
 	samphp::init()->loadGamemode();
-
 	return samphp::instance->callBool("OnGameModeInit");
 }
 
@@ -154,10 +153,9 @@ PLUGIN_EXPORT bool PLUGIN_CALL OnVehicleDamageStatusUpdate(int vehicleid, int pl
 	return samphp::instance->callBool("OnVehicleDamageStatusUpdate", "ll", vehicleid, playerid);
 }
 
-PLUGIN_EXPORT bool PLUGIN_CALL OnUnoccupiedVehicleUpdate(int vehicleid, int playerid, int passenger, float new_x, float new_y, float new_z, 
-	float vel_x, float vel_y, float vel_z)
+PLUGIN_EXPORT bool PLUGIN_CALL OnUnoccupiedVehicleUpdate(int vehicleid, int playerid, int passenger, float new_x, float new_y, float new_z)
 {
-	return samphp::instance->callBool("OnUnoccupiedVehicleUpdate", "llldddddd", vehicleid, playerid, passenger, new_x, new_y, new_z, vel_x, vel_y, vel_z);
+	return samphp::instance->callBool("OnUnoccupiedVehicleUpdate", "lllddd", vehicleid, playerid, passenger, new_x, new_y, new_z);
 }
 
 PLUGIN_EXPORT bool PLUGIN_CALL OnPlayerSelectedMenuRow(int playerid, int row)
@@ -188,6 +186,16 @@ PLUGIN_EXPORT bool PLUGIN_CALL OnRconLoginAttempt(const char *ip, const char *pa
 PLUGIN_EXPORT bool PLUGIN_CALL OnPlayerUpdate(int playerid)
 {
 	return samphp::instance->callBool("OnPlayerUpdate", "l", playerid);
+}
+
+PLUGIN_EXPORT bool PLUGIN_CALL OnIncomingConnection(int playerid, const char *ip_address, int port)
+{
+	return samphp::instance->callBool("OnIncomingConnection", "lsl", playerid, ip_address, port);
+}
+
+PLUGIN_EXPORT bool PLUGIN_CALL OnPlayerWeaponShot(int playerid, int weaponid, int hittype, int hitid, float fX, float fY, float fZ)
+{
+	return samphp::instance->callBool("OnPlayerWeaponShot", "llllddd", playerid, weaponid, hittype, hitid, fX, fY, fZ);
 }
 
 PLUGIN_EXPORT bool PLUGIN_CALL OnPlayerStreamIn(int playerid, int forplayerid)
@@ -258,12 +266,4 @@ PLUGIN_EXPORT bool PLUGIN_CALL OnPlayerClickTextDraw(int playerid, int clickedid
 PLUGIN_EXPORT bool PLUGIN_CALL OnPlayerClickPlayerTextDraw(int playerid, int playertextid)
 {
 	return samphp::instance->callBool("OnPlayerClickPlayerTextDraw", "ll", playerid, playertextid);
-}
-
-PLUGIN_EXPORT bool PLUGIN_CALL OnIncomingConnection(int playerid, const char* ip, int port) {
-	return samphp::instance->callBool("OnIncomingConnection", "lsl", playerid, ip, port);
-}
-
-PLUGIN_EXPORT bool PLUGIN_CALL OnTrailerUpdate(int playerid, int vehicleid) {
-	return samphp::instance->callBool("OnTrailerUpdate", "ll", playerid, vehicleid);
 }

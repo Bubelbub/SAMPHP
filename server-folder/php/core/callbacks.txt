@@ -38,6 +38,8 @@ OnPlayerTakeDamage
 OnPlayerTeamPrivmsg
 OnPlayerText
 OnPlayerUpdate
+OnPlayerWeaponShot
+OnIncomingConnection
 OnRconCommand
 OnRconLoginAttempt
 OnUnoccupiedVehicleUpdate
@@ -49,6 +51,4 @@ OnVehicleRespray
 OnVehicleSpawn
 OnVehicleStreamIn
 OnVehicleStreamOut
-OnIncomingConnection
-OnTrailerUpdate
-OnUnoccupiedVehicleUpdate
+

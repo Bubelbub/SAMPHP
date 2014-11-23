@@ -70,7 +70,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\Program Files (x86)\sampgdk 3.4\include;D:\php-sdk\php54dev\vc9\x86\php-5.4.15-src;D:\php-sdk\php54dev\vc9\x86\php-5.4.15-src\Zend;D:\php-sdk\php54dev\vc9\x86\php-5.4.15-src\win32;D:\php-sdk\php54dev\vc9\x86\php-5.4.15-src\TSRM;D:\php-sdk\php54dev\vc9\x86\php-5.4.15-src\sapi;D:\php-sdk\php54dev\vc9\x86\php-5.4.15-src\main;$(ProjectDir)..\..\libs\zeex;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\libs\sampgdk\include;$(ProjectDir)..\..\libs\php;$(ProjectDir)..\..\libs\php\Zend;$(ProjectDir)..\..\libs\php\win32;$(ProjectDir)..\..\libs\php\TSRM;$(ProjectDir)..\..\libs\php\sapi;$(ProjectDir)..\..\libs\php\main;$(ProjectDir)..\..\libs\zeex;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;ZEND_WIN32_FORCE_INLINE;ZEND_DEBUG=0;ZEND_WIN32;PHP_WIN32;_USE_32BIT_TIME_T;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -81,7 +81,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>sampgdk3.lib;php5embed.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Program Files (x86)\sampgdk 3.4\lib;D:\php-sdk\php54dev\vc9\x86\php-5.4.15-src\Release</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\..\libs\sampgdk\lib;$(ProjectDir)..\..\libs\php\Release</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>samphp.def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
@@ -92,7 +92,7 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <AdditionalIncludeDirectories>E:\sampgdk\include;E:\phpsrc\php-5.6.2-src;E:\phpsrc\php-5.6.2-src\Zend;E:\phpsrc\php-5.6.2-src\win32;E:\phpsrc\php-5.6.2-src\TSRM;E:\phpsrc\php-5.6.2-src\sapi;E:\phpsrc\php-5.6.2-src\main;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\libs\sampgdk\include;$(ProjectDir)..\..\libs\php;$(ProjectDir)..\..\libs\php\Zend;$(ProjectDir)..\..\libs\php\win32;$(ProjectDir)..\..\libs\php\TSRM;$(ProjectDir)..\..\libs\php\sapi;$(ProjectDir)..\..\libs\php\main;$(ProjectDir)..\..\libs\zeex;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_RELEASE;_WINDOWS;_USRDLL;ZEND_WIN32_FORCE_INLINE;ZEND_DEBUG=0;ZEND_WIN32;PHP_WIN32;_USE_32BIT_TIME_T;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -102,7 +102,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>sampgdk4.lib;php5embed.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>E:\sampgdk\lib;E:\phpsrc\php-5.6.2-src\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\..\libs\sampgdk\lib;$(ProjectDir)..\..\libs\php\Release</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>samphp.def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
@@ -114,7 +114,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug n Run|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\Program Files (x86)\sampgdk 3.4\include;D:\php-sdk\php54dev\vc9\x86\php-5.4.15-src;D:\php-sdk\php54dev\vc9\x86\php-5.4.15-src\Zend;D:\php-sdk\php54dev\vc9\x86\php-5.4.15-src\win32;D:\php-sdk\php54dev\vc9\x86\php-5.4.15-src\TSRM;D:\php-sdk\php54dev\vc9\x86\php-5.4.15-src\sapi;D:\php-sdk\php54dev\vc9\x86\php-5.4.15-src\main;$(ProjectDir)..\..\libs\zeex;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\libs\sampgdk\include;$(ProjectDir)..\..\libs\php;$(ProjectDir)..\..\libs\php\Zend;$(ProjectDir)..\..\libs\php\win32;$(ProjectDir)..\..\libs\php\TSRM;$(ProjectDir)..\..\libs\php\sapi;$(ProjectDir)..\..\libs\php\main;$(ProjectDir)..\..\libs\zeex;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;ZEND_WIN32_FORCE_INLINE;ZEND_DEBUG=0;ZEND_WIN32;PHP_WIN32;_USE_32BIT_TIME_T;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -125,7 +125,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>sampgdk3.lib;php5embed.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Program Files (x86)\sampgdk 3.4\lib;D:\php-sdk\php54dev\vc9\x86\php-5.4.15-src\Release</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\..\libs\sampgdk\lib;$(ProjectDir)..\..\libs\php\Release</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>samphp.def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>

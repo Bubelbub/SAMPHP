@@ -1,5 +1,10 @@
 Changelog
 =========
+2014/05/12 (made by erorcun):
+- Now it's compatible with 0.3z
+- Serious Object/PlayerObject problem in framework fixed
+- Callbacks' return values fixed
+
 2014/11/18:
 - Updated the PHP Version for 5.6.3
 - Added support for MySQLI and PDO.
